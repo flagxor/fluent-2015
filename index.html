@@ -139,6 +139,10 @@
         </section>
 
         <section data-transition="zoom">
+          <img src="ti99.jpg"/>
+        </section>
+
+        <section data-transition="zoom">
           <h1>Native Code</h1>
         </section>
 
@@ -778,7 +782,7 @@ zlib
             <li class="fragment">Faster in some browsers than others</li>
             <li class="fragment">Fast and getting faster</li>
             <ul>
-              <li class="fragment">50-60% of Raw Native</li>
+              <li class="fragment">High percentage of Raw Native</li>
               <li class="fragment">SIMD.js under development</li>
               <li class="fragment">Shared Memory + Threads being explored</li>
             </ul>
@@ -895,6 +899,32 @@ function strlen(ptr) {
   return (curr - ptr)|0;
 }
           </code></pre>
+        </section>
+
+        <section>
+          <h2>Blocking can be Tricky</h2>
+          <table class="boxy">
+            <tr>
+              <td style="min-width: 200px"><div class="fragment" data-fragment-index="1">
+                <img width="200" height="200" src="chrome.png"/>
+              </div></td>
+              <td class="fragment" data-fragment-index="2">&rarr;</td>
+              <td>
+                <div class="box2 fragment" data-fragment-index="2">
+                  JavaScript</div>
+              </td>
+              <td class="fragment" data-fragment-index="3">&rarr;</td>
+              <td>
+                <div class="box2 fragment" data-fragment-index="3">
+                  asm.js</div>
+              </td>
+              <td class="fragment" data-fragment-index="4">&rarr;</td>
+              <td>
+                <div class="box2 fragment" data-fragment-index="4">
+                  External JavaScript</div>
+              </td>
+            </tr>
+          </table>
         </section>
 
         <section>
