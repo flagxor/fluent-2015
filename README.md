@@ -21,6 +21,8 @@ Learn how you can:
 
 View slides online [here](https://flagxor.github.io/fluent-2015).
 
+Clone sample Python App [here](https://github.com/flagxor/fluent-pnacl-sample).
+
 NOTE: This slide deck uses submodules.
 Before use, run: git submodule update --init.
 
