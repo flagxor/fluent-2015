@@ -224,36 +224,52 @@ body {
 /*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
-.reveal .controls div.navigate-left, .reveal .controls div.navigate-left.enabled {
-  visibility: hidden;
+.reveal .controls div.navigate-left {
+  opacity: 0;
   border-right-color: #32a; }
 
-.reveal .controls div.navigate-right, .reveal .controls div.navigate-right.enabled {
-  visibility: hidden;
+.reveal .controls div.navigate-left.enabled {
+  opacity: 0.2;
+  border-right-color: #32a; }
+
+.reveal .controls div.navigate-right {
+  opacity: 0;
   border-left-color: #32a; }
 
-.reveal .controls div.navigate-up, .reveal .controls div.navigate-up.enabled {
-  visibility: hidden;
+.reveal .controls div.navigate-right.enabled {
+  opacity: 0.2;
+  border-left-color: #32a; }
+
+.reveal .controls div.navigate-up {
+  opacity: 0;
   border-bottom-color: #32a; }
 
-.reveal .controls div.navigate-down, .reveal .controls div.navigate-down.enabled {
-  visibility: hidden;
+.reveal .controls div.navigate-up.enabled {
+  opacity: 0.2;
+  border-bottom-color: #32a; }
+
+.reveal .controls div.navigate-down {
+  opacity: 0;
+  border-top-color: #32a; }
+
+.reveal .controls div.navigate-down.enabled {
+  opacity: 0.2;
   border-top-color: #32a; }
 
 .reveal .controls div.navigate-left.enabled:hover {
-  visibility: hidden;
+  opacity: 1;
   border-right-color: #6755dd; }
 
 .reveal .controls div.navigate-right.enabled:hover {
-  visibility: hidden;
+  opacity: 1;
   border-left-color: #6755dd; }
 
 .reveal .controls div.navigate-up.enabled:hover {
-  visibility: hidden;
+  opacity: 1;
   border-bottom-color: #6755dd; }
 
 .reveal .controls div.navigate-down.enabled:hover {
-  visibility: hidden;
+  opacity: 1;
   border-top-color: #6755dd; }
 
 /*********************************************
