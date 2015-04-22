@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Amplify your Web App with Native Code</title>
+    <meta name="description" content="A presenatation at Fluent on April 22, 2015">
+    <meta name="author" content="Brad Nelson">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="theme.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var reveal_js = 'reveal.js';
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? reveal_js + '/css/print/pdf.css' : reveal_js + '/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1><font color="#ff0">AMPLIFY</font> your Web App</h1>
+          <h3>with <font color="#f33">Native Code</font></h3>
+          <p>
+            <small>April 22, 2015 - <a href="http://flagxor.com">Brad Nelson</a> / <a href="http://twitter.com/flagxor">@flagxor</a></small>
+          </p>
+        </section>
+
+        <section>
+
+        <section>
+          <h3>What's your favorite<br/>
+              Programming Language?</h3>
+          <table>
+          <tr><td>
+          <ul>
+            <li class="fragment">C</li>
+            <li class="fragment">C++</li>
+            <li class="fragment">Ruby</li>
+            <li class="fragment">Lua</li>
+            <li class="fragment">Java</li>
+            <li class="fragment">PHP</li>
+            <li class="fragment">Python</li>
+            <li class="fragment">Haskell</li>
+          </ul>
+          </td><td>
+          <ul>
+            <li class="fragment">Perl</li>
+            <li class="fragment">Objective-C</li>
+            <li class="fragment">Fortran</li>
+            <li class="fragment">Go</li>
+            <li class="fragment">Shell</li>
+            <li class="fragment">Matlab</li>
+            <li class="fragment">Forth</li>
+            <li class="fragment">
+              <span class="fragment highlight-red">JavaScript</span></li>
+          </ul>
+          </td></tr>
+          </table>
+        </section>
+
+        <section>
+          <h3>What's your favorite<br/>
+              Framework / Library?</h3>
+          <table>
+          <tr><td>
+          <ul>
+            <li class="fragment"
+             data-fragment-index="1">Boost</li>
+            <li class="fragment"
+             data-fragment-index="2">Box2D</li>
+            <li class="fragment"
+             data-fragment-index="3">Bullet</li>
+            <li class="fragment"
+             data-fragment-index="4">SDL</li>
+            <li class="fragment"
+             data-fragment-index="5">OpenGL</li>
+            <li class="fragment"
+             data-fragment-index="6">Orge3D</li>
+            <li class="fragment"
+             data-fragment-index="7">OpenCV</li>
+            <li class="fragment"
+             data-fragment-index="8">pango</li>
+            <li class="fragment"
+             data-fragment-index="9">Qt</li>
+            <li class="fragment" data-fragment-index="10">
+              <span class="fragment highlight-red"
+               data-fragment-index="100">Polymer</span></li>
+          </ul>
+          </td><td>
+          <ul>
+            <li class="fragment"
+             data-fragment-index="11">Rails</li>
+            <li class="fragment"
+             data-fragment-index="12">Twisted</li>
+            <li class="fragment" data-fragment-index="13">
+              <span class="fragment highlight-red"
+               data-fragment-index="100">AngularJS</span></li>
+            <li class="fragment"
+             data-fragment-index="14">libcurl</li>
+            <li class="fragment"
+             data-fragment-index="15">OpenSSL</li>
+            <li class="fragment"
+             data-fragment-index="16">zlib</li>
+            <li class="fragment"
+             data-fragment-index="17">BeautifulSoup</li>
+            <li class="fragment"
+             data-fragment-index="18">NumPy</li>
+            <li class="fragment"
+             data-fragment-index="19">sqlite</li>
+            <li class="fragment" data-fragment-index="20">
+              <span class="fragment highlight-red"
+               data-fragment-index="100">jQuery</span></li>
+          </ul>
+          </td></tr>
+          </table>
+        </section>
+
+        <section data-transition="zoom">
+          <h1>What's missing?</h1>
+        </section>
+
+        <section data-transition="zoom">
+          <h1>Native Code</h1>
+        </section>
+
+        <section>
+          <h2>Native Code on the Web?</h2>
+          <img width="800" class="fragment" src="activex.gif"/>
+        </section>
+
+        </section>
+
+        <section>
+
+        <section>
+          <h2>How can I run Native Code Safely on the Web?</h2>
+          <ul>
+            <li class="fragment strike">ActiveX</li>
+            <li class="fragment strike">NPAPI</li>
+            <li class="fragment">Native Client</li>
+            <li class="fragment">Emscripten / Asm.js</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Challenges</h2>
+          <ul>
+            <li class="fragment">Each browser different</li>
+            <li class="fragment">What's fast in one, may be slow in another</li>
+            <li class="fragment">Complicated toolchains</li>
+            <li class="fragment">Cross-compile is hard</li>
+          </ul>
+        </section>
+
+        </section>
+
+        <section>
+
+        <section>
+          <h2>Native Client</h2>
+          <ul>
+            <li class="fragment">Native code as secure as JavaScript</li>
+            <li class="fragment">Verifiably safe</li>
+            <li class="fragment">Portable</li>
+            <li class="fragment">Fast</li>
+            <ul>
+              <li class="fragment">80-95% of Raw Native</li>
+              <li class="fragment">SIMD support</li>
+              <li class="fragment">Threads and shared memory</li>
+            </ul>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Jargon</h2>
+          <ul>
+            <li class="fragment">
+              <b>Na</b>tive <b>Cl</b>ient &rarr; <b>NaCl</b></li>
+            <li class="fragment">
+              <b>P</b>ortable <b>Na</b>tive <b>Cl</b>ient
+                &rarr; <b>PNaCl</b></li>
+          </ul>
+        </section>
+        </section>
+
+        <section>
+
+        <section>
+          <h1>Secure!?!<br/>Native Code</h1>
+        </section>
+
+        <section>
+          <h2>Native Client</h2>
+          <table class="boxy">
+            <tr>
+              <td>
+                <div class="box2 fragment" data-fragment-index="1">
+                  foo.h</div>
+              </td>
+              <td class="fragment" data-fragment-index="2">&#8594;</td>
+              <td>
+                <div class="box3 fragment" data-fragment-index="2">
+                  NaCl Toolchain</div>
+              </td>
+              <td class="fragment" data-fragment-index="3">&#8594;</td>
+              <td>
+                <div class="box2 fragment" data-fragment-index="3">
+                  foo.nexe</div>
+              </td>
+              <td class="fragment" data-fragment-index="5">&#8594;</td>
+              <td style="min-width: 200px">
+                <div class="fragment" data-fragment-index="5">
+                <img width="200" height="200" src="chrome.png"/>
+              </div></td>
+            </tr>
+            <tr>
+              <td><div class="box2 fragment" data-fragment-index="1">
+                foo.c</div></td>
+              <td class="fragment" data-fragment-index="2">&#8599;</td>
+              <td> </td>
+              <td> </td>
+              <td><div class="box2 fragment" data-fragment-index="4">
+                foo.html</div></td>
+              <td class="fragment" data-fragment-index="5">&#8599;</td>
+            </tr>
+          </table>
+        </section>
+
+        <section data-transition="zoom">
+          <h1>What makes it safe?</h1>
+        </section>
+
+        <section>
+          <h2>Two Sandboxes!</h2>
+          <ul>
+            <li class="fragment">Outer Process Sandbox</li>
+            <li class="fragment">Inner Static Verification Sandbox</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Process Sandbox</h2>
+          <table class="boxy">
+            <tr>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td class="fragment" data-fragment-index="5">&#10530;</td>
+              <td><div class="box2 fragment" data-fragment-index="5">
+                Renderer Process</div></td>
+              <td class="fragment" data-fragment-index="6">&#8596;</td>
+              <td><div class="box3 fragment" data-fragment-index="6">
+                NaCl Process</div></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="box1 fragment" data-fragment-index="2">OS</div>
+              </td>
+              <td class="fragment" data-fragment-index="2">&#8596;</td>
+              <td style="min-width: 200px"><div class="fragment" data-fragment-index="1">
+                <img width="200" height="200" src="chrome.png"/>
+              </div></td>
+              <td class="fragment" data-fragment-index="3">&#8596;</td>
+              <td><div class="box2 fragment" data-fragment-index="3">
+                Renderer Process</div></td>
+              <td> </td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td class="fragment" data-fragment-index="4">&#10529;</td>
+              <td><div class="box2 fragment" data-fragment-index="4">
+                Renderer Process</div></td>
+              <td> </td>
+              <td> </td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h2>Software Fault Isolation<br/><h3>(Inner Sandbox)</h3></h2>
+          <ul>
+            <li class="fragment">Restrict what code can execute
+              <br/>(Control Flow Integrity)</li>
+            <li class="fragment">Restrict what data can be accessed
+              <br/>(Data Integrity)</li>
+            <li class="fragment">Restrict I/O interface</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>NaCl Address Space</h2>
+          <table class="boxy">
+            <tr>
+              <td>0 - 256MB</td>
+              <td><div class="box2" style="min-width: 400px; min-height: 100px">
+                Code</div></td>
+            </tr>
+            <tr>
+              <td>256MB - 1GB / 4GB</td>
+              <td><div class="box3" style="min-width: 400px; min-height: 300px">
+                Data</div></td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h2>Code Flow Integrity</h2>
+          <ul>
+            <li class="fragment">Be able to disassemble all code</li>
+            <li class="fragment">Disassembly must be unambiguous</li>
+            <li class="fragment">Know where all direct jumps can lead</li>
+            <li class="fragment">Know all indirect jump (including returns)
+                                 are safe</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Bundle Alignment</h2>
+          <img src="bundle1.png"/>
+        </section>
+
+        <section>
+          <h2>Code Flow / Data Integrity</h2>
+          <ul>
+            <li class="fragment">Architecture specific restrictions
+                                 on valid regions (segments)</li>
+            <li class="fragment">Mask jumps / memory access</li>
+          </ul>
+        </section>
+
+        </section>
+
+
+        <section>
+
+        <section>
+          <h1>What about I/O?</h1>
+        </section>
+
+        <section>
+          <h2>Syscalls</h2>
+          <ul>
+            <li class="fragment">Ban all the dangerous instructions</li>
+            <li class="fragment">Do syscalls through trampolines</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>PPAPI</h2>
+          <ul>
+            <li class="fragment">Asynchronous API for:
+              <ul>
+                <li class="fragment">2D Graphics</li>
+                <li class="fragment">3D Graphics</li>
+                <li class="fragment">Sound</li>
+                <li class="fragment">Network Access</li>
+                <li class="fragment">Clipboard</li>
+                <li class="fragment">Media Streams</li>
+                <li class="fragment">Local Storage</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        </section>
+
+        <section>
+          <section>
+            <h2>Where can it run?</h2>
+            <ul>
+              <li class="fragment">Google Chrome</li>
+              <li class="fragment"><u>Chrome Web Store</u></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Chrome Web Store</h2>
+            <img src="chrome_web_store.png"/>
+          </section>
+
+          <section>
+            <img src="google_voice.png"/>
+          </section>
+
+          <section>
+            <img src="norton.png"/>
+          </section>
+
+          <section>
+            <img src="google_photos.png"/>
+          </section>
+
+          <section>
+            <img src="play_music.png"/>
+          </section>
+
+          <section>
+            <img src="video_stream.png"/>
+          </section>
+
+          <section>
+            <img src="quick_office.png"/>
+          </section>
+
+          <section>
+            <img src="hola.png"/>
+          </section>
+
+          <section>
+            <img src="ssh2.png"/>
+          </section>
+
+          <section>
+            <img src="vnc.png"/>
+          </section>
+
+          <section>
+            <img src="rdp.png"/>
+          </section>
+
+          <section>
+            <img src="bastion.png"/>
+          </section>
+
+          <section>
+            <img src="murder_files.png"/>
+          </section>
+
+        </section>
+
+        <section>
+
+          <section>
+            <img src="arc_welder.png"/>
+          </section>
+
+          <section>
+            <img src="duolingo.png"/>
+          </section>
+
+          <section>
+            <img src="evernote.png"/>
+          </section>
+
+          <section>
+            <img src="overdrive.png"/>
+          </section>
+
+          <section>
+            <img src="vine.png"/>
+          </section>
+
+        </section>
+
+        <section>
+
+        <section>
+          <h2>What about POSIX?</h2>
+        </section>
+
+        <section>
+          <h2>nacl_io</h2>
+          <ul>
+            <li class="fragment">POSIX compatibility on top of PPAPI</li>
+            <li class="fragment">Virtual filesystem mounts:
+              <ul>
+                <li class="fragment">Memory</li>
+                <li class="fragment">Local Storage</li>
+                <li class="fragment">HTTP</li>
+                <li class="fragment">FUSE</li>
+              </ul>
+            </li>
+            <li class="fragment">POSIX like sockets</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>nacl-spawn</h2>
+          <ul>
+            <li class="fragment">POSIX like processes</li>
+            <li class="fragment">PIDs</li>
+            <li class="fragment">spawnve, vfork, exec, waitpid</li>
+            <li class="fragment">Pipes</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>JavaScript "Kernel"</h2>
+          <table class="boxy">
+            <tr>
+              <td> </td>
+              <td><div class="box2 fragment" data-fragment-index="1">
+                naclprocess.js</div></td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td class="fragment" data-fragment-index="2">&#10530;</td>
+              <td class="fragment" data-fragment-index="2">&#8597;</td>
+              <td class="fragment" data-fragment-index="2">&#10529;</td>
+            </tr>
+            <tr>
+              <td><div class="box3 fragment" data-fragment-index="2">
+                NaCl Module (process)</div></td>
+              <td><div class="box3 fragment" data-fragment-index="2">
+                NaCl Module (process)</div></td>
+              <td><div class="box3 fragment" data-fragment-index="2">
+                NaCl Module (process)</div></td>
+            </tr>
+            <tr>
+              <td class="fragment" data-fragment-index="3">1</td>
+              <td class="fragment" data-fragment-index="3">2</td>
+              <td class="fragment" data-fragment-index="3">3</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h2>hterm</h2>
+          <img src="ssh.png"/>
+        </section>
+
+        </section>
+
+        <section>
+
+        <section>
+          <h1>What about portability?</h1>
+        </section>
+
+        <section>
+          <h2>Portability</h2>
+          <ul>
+            <li class="fragment">Most of what we want is C code</li>
+            <li class="fragment">But we want low level performance</li>
+            <li class="fragment">Move part of the compile to the client?</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Portable Native Client</h2>
+          <ul>
+            <li class="fragment">High level optimizations ahead of time<br/>
+              (PNaCl Toolchain)</li>
+            <li class="fragment">Low level optimizations on the client<br/>
+              (PNaCl Translator)</li>
+            <li class="fragment">Transmit portable type-reduced LLVM bitcode<br/>
+              (PEXE)</li>
+            <li class="fragment">Run in Chrome on ANY page!</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>PNaCl Translator</h2>
+          <table class="boxy">
+            <tr>
+              <td> </td>
+              <td> </td>
+              <td class="fragment" data-fragment-index="5">
+                 <small>Stream .pexe from URL</small><br/>
+                 &#10225;</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="box2 fragment" data-fragment-index="1">
+                  foo.pexe</div>
+              </td>
+              <td class="fragment" data-fragment-index="3">
+                  <small>no translation exists</small><br/>
+                  &#8594;</td>
+              <td>
+                <div class="box3 fragment" data-fragment-index="4">
+                  Translator<br/>
+                  [llc.nexe]</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="box3 fragment" data-fragment-index="2">
+                  Translation Cache</div>
+              </td>
+              <td> </td>
+              <td class="fragment" data-fragment-index="7">
+                  <small>write .nexe</small><br/>
+                  &#8595;</td>
+            </tr>
+            <tr>
+              <td class="fragment" data-fragment-index="9">
+                  <small>use .nexe from cache</small><br/>
+                  &#8595;</td>
+              <td class="fragment" data-fragment-index="8">
+                  &#8598;
+                  <small>save foo.nexe</small><br/>
+                  </td>
+              <td>
+                <div class="box2 fragment" data-fragment-index="7">
+                  foo.nexe</div>
+              </td>
+            </tr>
+          </table>
+        </section>
+
+        </section>
+
+        <section>
+
+        <section>
+          <h1>What about Libraries?</h1>
+        </section>
+
+        <section>
+          <h2>Naclports</h2>
+          <ul>
+            <li class="fragment">Free / Open Source ports to NaCl</li>
+            <li class="fragment">Stored as build script + patches</li>
+            <li class="fragment">Dependencies</li>
+            <li class="fragment">Mirror upstream source</li>
+            <li class="fragment">Continuous build and test</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>250+ Ported Packages!</h2>
+          <small>
+agg agg-demo alut-demo apr apr-util bash bdftopcf bigreqsproto binutils
+blackbox blis bochs boost boringssl box2d bullet busybox bzip2 cairo cfitsio
+civetweb clapack compositeproto coreutils curl damageproto devenv devenv-latest
+devil dosbox dreadthread drod emacs emacs-x expat faac faad2 ffmpeg fftw
+fftw-float fixesproto flac font-adobe-100dpi font-adobe-75dpi
+font-adobe-utopia-100dpi font-adobe-utopia-75dpi font-adobe-utopia-type1
+font-alias font-bh-100dpi font-bh-75dpi font-bh-lucidatypewriter-100dpi
+font-bh-lucidatypewriter-75dpi font-bh-ttf font-bh-type1 font-bitstream-100dpi
+font-bitstream-75dpi font-bitstream-type1 font-cronyx-cyrillic font-cursor-misc
+font-daewoo-misc font-dec-misc font-ibm-type1 font-isas-misc font-jis-misc
+font-micro-misc font-misc-cyrillic font-misc-ethiopic font-misc-meltho
+font-misc-misc font-mutt-misc font-schumacher-misc font-screen-cyrillic
+font-sony-misc font-sun-misc font-util font-winitzki-cyrillic
+font-xfree86-type1 fontconfig fontsproto freealut freeimage freetype fvwm gc
+gcc gdb gettext geturl gforth giflib git glib glibc-compat glproto gmock gmp
+grep gsl gtest hdf5 icu imagemagick inputproto ipython-ppapi jpeg6b jpeg8d
+jsoncpp kbproto lame lcms leveldb libarchive libarchive-dev libatomic-ops libav
+libffi libfontenc libgit2 libgit2-demo libhangul libice libiconv libmikmod
+libmng libmodplug libogg liboggz libpciaccess libpng libpng12 libsm libsodium
+libssh libssh2 libtar libtheora libtomcrypt libtommath libtool libunistring
+libuuid libvorbis libwebp libx11 libxau libxaw libxcb libxext libxfont libxi
+libxinerama libxkbfile libxml2 libxmu libxpm libxrender libxt libxtst libyuv
+lua-ppapi lua5.1 lua5.2 m4 make mesa mesa-demo metakit mingn mongoose mp4v2 mpc
+mpfr mpg123 nacl-spawn nano ncurses netcat nethack ninja openal-ogg-demo
+openal-soft opencv openjpeg openscenegraph openssh openssl pango pcre physfs
+pixman protobuf protobuf-c protobuf25 python python-host python-ppapi
+python-static python3 python3-ppapi python_modules quakespasm randrproto
+readline recordproto regal renderproto resourceproto ruby ruby-ppapi
+scrnsaverproto scummvm sdl sdl-image sdl-mixer sdl-net sdl-tests sdl-ttf sdl2
+sdl2-gfx sdl2-image sdl2-tests sdl2-ttf sdlquake snes9x speex sqlite subversion
+tar tcl texlive thttpd tiff tinyxml tk toybox twm unzip videoproto vim x264
+xaos xbitmaps xcb-proto xcb-util xcmiscproto xextproto xeyes xfonts
+xineramaproto xkbcomp xkeyboard-config xorg-server xproto xtrans yajl zeromq
+zlib
+          </small>
+        </section>
+
+        <section>
+          <h2>Continuous Build</h2>
+          <img src="buildbot.png"/>
+        </section>
+
+        </section>
+
+        <section>
+
+        <section>
+          <h1>Develop in the Browser!</h1>
+        </section>
+
+        <section>
+          <h2>NaCl Dev Environment</h2>
+          <ul>
+            <li class="fragment">Mini-Unix</li>
+            <li class="fragment">Bash</li>
+            <li class="fragment">Editors (Vim, Nano, Emacs)</li>
+            <li class="fragment">Source Control (Git, SVN)</li>
+            <li class="fragment">Interpreters (Python, Ruby, Lua,
+                                 Tcl/Tk, GForth)</li>
+            <li class="fragment">Compilers (GCC, LLVM)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>NaCl Dev Environment</h2>
+          <img src="devenv1.png"
+           style="width: 65%;"/>
+          <img src="fire.png"
+           style="width: 50%; position: fixed; top: 50%; left: 50%;"/>
+        </section>
+
+        <section>
+          <h1>I'm serving my slides from it!</h1>
+        </section>
+
+        </section>
+
+        <section>
+
+        <section>
+          <h2>Emscripten</h2>
+          <ul>
+            <li class="fragment">C/C++ compiled to Javascript</li>
+            <li class="fragment">As secure as JavaScript, because it is
+                                 JavaScript</li>
+            <li class="fragment">Direct DOM access</li>
+            <li class="fragment">Requires modern browser with ArrayBuffer</li>
+            <li class="fragment">Faster in some browsers than others</li>
+            <li class="fragment">Fast and getting faster</li>
+            <ul>
+              <li class="fragment">50-60% of Raw Native</li>
+              <li class="fragment">SIMD.js under development</li>
+              <li class="fragment">Shared Memory + Threads being explored</li>
+            </ul>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Jargon</h2>
+          <ul>
+            <li class="fragment">
+              Emscripten &rarr; LLVM to JavaScript compiler</li>
+            <li class="fragment">
+              emscripten-fastcomp &rarr; New JS backend for LLVM</li>
+            <li class="fragment">
+              asm.js &rarr;
+              A JavaScript subset handled specially by Firefox</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Emscripten</h2>
+          <table class="boxy">
+            <tr>
+              <td>
+                <div class="box2 fragment" data-fragment-index="1">
+                  foo.h</div>
+              </td>
+              <td class="fragment" data-fragment-index="2">&#8594;</td>
+              <td>
+                <div class="box3 fragment" data-fragment-index="2">
+                  Emscripten Toolchain</div>
+              </td>
+              <td class="fragment" data-fragment-index="3">&#8594;</td>
+              <td>
+                <div class="box2 fragment" data-fragment-index="3">
+                  foo.js</div>
+              </td>
+              <td class="fragment" data-fragment-index="4">&#8594;</td>
+              <td style="min-width: 200px">
+                <div class="fragment" data-fragment-index="4">
+                <img width="200" height="200" src="chrome.png"/>
+              </div></td>
+            </tr>
+            <tr>
+              <td><div class="box2 fragment" data-fragment-index="1">
+                foo.c</div></td>
+              <td class="fragment" data-fragment-index="2">&#8599;</td>
+              <td> </td>
+              <td class="fragment" data-fragment-index="3">&#8600;</td>
+              <td><div class="box2 fragment" data-fragment-index="3">
+                foo.html</div></td>
+              <td class="fragment" data-fragment-index="4">&#8599;</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h2>Asm.js</h2>
+          <ul>
+            <li class="fragment">Strict JavaScript subset</li>
+            <li class="fragment">Implicit type information</li>
+            <li class="fragment">Pointers relative to a single heap</li>
+            <li class="fragment">Explicit support in Firefox
+              via "use asm" directive</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Implicit type information</h2>
+          <ul>
+            <li class="fragment">+(xxx) &rarr; double</li>
+            <li class="fragment">(xxx)|0 &rarr; signed 32-bit integer</li>
+            <li class="fragment">(xxx)&gt;&gt;&gt;0 &rarr;
+             unsigned 32-bit integer</li>
+          </ul>
+        </section>
+
+        <section>
+          <pre><code data-trim>
+function add32(a, b) {
+  a = a | 0;  // a is an int32
+  b = b | 0;  // b is an int32
+  return (a + b) | 0;
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code data-trim>
+function MyAsmModule(stdlib, foreign, heap) {
+  "use asm";
+  var HEAPU8 = new Uint8Array(heap);
+  var HEAP8 = new Int8Array(heap);
+  var HEAP32 = new Int32Array(heap);
+  // module body...
+  return {
+    export1: f1,
+    export2: f2,
+    // ...
+  };
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code data-trim>
+function strlen(ptr) {
+  ptr = ptr|0;
+  var curr = 0;
+  curr = ptr;
+  while (HEAP8[curr]|0 != 0) {
+    curr = (curr + 1)|0;
+  }
+  return (curr - ptr)|0;
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Exciting things are happening!</h2>
+          <ul>
+            <li class="fragment">Shared Memory + Workers</li>
+            <li class="fragment">Atomics</li>
+            <li class="fragment">Futexes</li>
+            <li class="fragment">SIMD.js</li>
+            <li class="fragment">More browsers</li>
+            <li class="fragment">Smaller wire format</li>
+          </ul>
+        </section>
+
+        </section>
+
+        <section>
+
+        <section>
+          <h2>How can I use this in my app?</h2>
+          <ul>
+            <li class="fragment">
+              Focus on features you can optionally push to the server</li>
+            <li class="fragment">
+              Or polyfill with an alternative experience</li>
+            <li class="fragment">
+              Or focus on a particular platform</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Using NaCl in my app</h2>
+          <ul>
+            <li class="fragment">C/C++ code
+              <ul>
+                <li class="fragment">Use libraries from naclports</li>
+                <li class="fragment">
+                  Use ppapi to postMessage with Javascript</li>
+              </ul>
+            </li>
+            <li class="fragment">Interpreted languages
+              <ul>
+                <li class="fragment">
+                  Use an interpreter port from naclports</li>
+                <li class="fragment">
+                  Use postMessage to talk to pipes/stdin/stdout</li>
+                <li class="fragment">
+                  Use DOM Filesystem access for large files</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><strike>HTML5</strike> DOM Filesystem Storage</h2>
+          <ul>
+            <li class="fragment">
+              Persistent and Temporary filesystems for WebApps</li>
+            <li class="fragment">
+              Random access files</li>
+            <li class="fragment">
+              Accessible from NaCl</li>
+            <li class="fragment">
+              URIs:
+              filesystem:https://foo.com/temporary/foo.txt</li>
+          </ul>
+        </section>
+
+        <section>
+          <pre><code data-trim>
+var mgr = new NaClProcessManager();
+mgr.spawn(
+    'python.nmf', ['python', 'foo.py', [
+      'PYTHONHOME=/lib/python2.7',
+      'PYTHONPATH=/lib/python2.7',
+    ], '/', 'pnacl', null,
+    function(pid) {
+  callback();
+});
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code data-trim>
+mgr.sendStdinForeground('message in\n');
+mgr.setStdoutListener(function(text) {
+  // use output.
+});
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code data-trim>
+import difflib
+
+def generate_diff(
+    data_before, data_after,
+    filename_before, filename_after):
+  return difflib.HtmlDiff().make_file(
+      data_before.splitlines(),
+      data_after.splitlines(),
+      filename_before, filename_after)
+          </code></pre>
+        </section>
+
+        <section>
+        <iframe width="100%" height="800px"
+         src="fluent-pnacl-sample/diff.html"></iframe>
+        </section>
+
+        </section>
+
+        <section>
+          <h2>Plan for the future</h2>
+          <ul>
+            <li class="fragment">Compatibility is improving</li>
+            <li class="fragment">NaCl SDK
+              <ul>
+                <li class="fragment">Emscripten support coming!</li>
+                <li class="fragment">Polyfills are coming!</li>
+              </ul>
+            </li>
+            <li class="fragment">All the browsers</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Questions?</h1>
+        </section>
+
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+
+    <script>
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: Reveal.getQueryHash().transition || 'default',
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: reveal_js + '/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: reveal_js + '/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: reveal_js + '/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: reveal_js + '/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: reveal_js + '/plugin/zoom-js/zoom.js', async: true },
+          { src: reveal_js + '/plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>

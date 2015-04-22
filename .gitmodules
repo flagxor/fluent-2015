@@ -1,0 +1,6 @@
+[submodule "reveal.js"]
+	path = reveal.js
+	url = https://github.com/hakimel/reveal.js.git
+[submodule "fluent-pnacl-sample"]
+	path = fluent-pnacl-sample
+	url = https://github.com/flagxor/fluent-pnacl-sample.git
